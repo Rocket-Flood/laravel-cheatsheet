@@ -313,6 +313,8 @@ background: rgb(197, 196, 196);
 > Import the CSS files into the "app.js" file
 
 ```Javascript
+// resources/js/app.js
+
 ... (other imports)
 import '../css/tailwind.css'
 import '../css/app.css'
