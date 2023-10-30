@@ -1,23 +1,28 @@
 # Laravel Cheat-Sheet
+
 > Create a Laravel project standalone or as a full-stack application using Vue.js 3 with Vite and Tailwind CSS
 
 ## Create Laravel Project
-> Replace "project-name" with the app name
->
-`composer create-project --prefer-dist laravel/laravel project-name`
 
+> Replace "project-name" with the app name
+
+`composer create-project --prefer-dist laravel/laravel project-name`
 
 ## Setup Vue.js
 
 **Install Vue.js and Vite**
->
+
+> cd into the new project
+
 `npm install vue@next vue-loader@next @vitejs/plugin-vue`
->
+
 **Import Vue.js into Laravel**
+
 > Navigate to the "vite.config.js" file in the root dir
-> 
+>
 > Import Vue.js and add it to the "plugins" array
-``` Javascript
+
+```Javascript
 // vite.config.js
 
 ...
@@ -31,13 +36,15 @@ export default defineConfig({
         })
     ],
 });
-````
+```
 
 **Setup App.vue**
+
 > Navigate to the "resource" folder in the root dir
-> 
+>
 > Create "App.vue" and paste the below
-``` Vue
+
+```Vue
 <!-- resources/App.vue -->
 
 <template>
@@ -82,10 +89,12 @@ input[type="text"]:focus{
 ```
 
 **Add App.vue to app.js**
+
 > Navigate to the "js" folder inside "resources"
-> 
+>
 > Replace the content in the "app.js" file with the below
-``` Javascript
+
+```Javascript
 // resources/js/app.js
 
 import './bootstrap'
@@ -96,10 +105,12 @@ createApp(App).mount("#app")
 ```
 
 **Update Laravel Blade to use Vue.js views**
+
 > Navigate to "views" inside the "resources" folder
 >
 > Replace the content in the "head" tag of "welcome.blade.php" with the below
-``` HTML
+
+```HTML
 <!-- resources/views/welcome.blade.php -->
 
 <head>
@@ -110,8 +121,10 @@ createApp(App).mount("#app")
   @vite('resources/css/app.css')
 </head>
 ```
+
 > Replace the content in the "body" tag of "welcome.blade.php" with the below
-``` HTML
+
+```HTML
 <!-- resources/views/welcome.blade.php -->
 <!-- remove the class from the body tag -->
 <body>
@@ -121,16 +134,18 @@ createApp(App).mount("#app")
 ```
 
 **Setup Vue Router**
+
 > Install Vue Router
->
+
 `npm install vue-router --save`
 
 > Navigate to the "js" folder in "resources"
-> 
+>
 > Create a new folder in "js" called "views"
 >
 > Create a new file in the "views" folder called "Home.vue" and paste the below
-``` Vue
+
+```Vue
 <!-- resources/js/views/Home.vue -->
 
 <template>
@@ -147,7 +162,8 @@ export default {
 > Navigate back to the "js" folder in "resources"
 >
 > Create a new file called "router.js" in the "js" folder and paste the below
-``` Javascript
+
+```Javascript
 // resources/js/router.js
 
 import {createRouter, createWebHistory} from 'vue-router';
@@ -191,8 +207,10 @@ export default router
 ```
 
 **Add router.js to app.js**
+
 > Navigate to the "app.js" file in the "js" folder and import the new router file to be used
-``` Javascript
+
+```Javascript
 ... (other imports into the Vue app)
 // import router file
 import router from './router.js'
@@ -205,10 +223,14 @@ createApp(App)
 ```
 
 **Update Laravel Web Routes to use Vue Router**
+
 > Navigate to the routes folder in the root dir
 >
 > Replace the "web.php" file content with the below
-``` PHP
+
+```PHP
+// routes/web.php
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -233,20 +255,24 @@ Route::get('/{vue_capture?}', function() {
 ## Add Tailwind CSS to the Project
 
 **Install Tailwind**
->
+
 `npm install -D tailwindcss@latest postcss@latest autoprefixer@latest`
+
 > This will create a "tailwind.config.js" file in the root dir
->
+
 `npx tailwindcss init -p`
+
 > Open the "tailwind.config.js" file in this repo and paste the contents
 >
 > Check the bottom of the "tailwind.config.js" file to see if it includes "@tailwind/forms" in the "plugins" array; if so install the dependency
->
+
 `npm install @tailwindcss/forms --save`
+
 > Navigate to the "resources" folder
 >
 > Inside the "css" folder create a new file called "tailwind.css" and paste the below
-``` CSS
+
+```CSS
 /* resources/css/tailwind.css */
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -257,7 +283,8 @@ Route::get('/{vue_capture?}', function() {
 ```
 
 > Add the following to the "app.css" file in the "css" folder to customize the scrollbar globally
-``` CSS
+
+```CSS
 /* resources/css/app.css */
 
 ::-webkit-scrollbar {
@@ -284,7 +311,8 @@ background: rgb(197, 196, 196);
 > Navigate to the "js" folder inside "resources"
 >
 > Import the CSS files into the "app.js" file
-``` Javascript
+
+```Javascript
 ... (other imports)
 import '../css/tailwind.css'
 import '../css/app.css'
@@ -293,11 +321,13 @@ createApp(App)...mount("#app")
 ```
 
 ## Start Laravel Server
+
 **Migrate Database**
+
 > Run the following command to migrate the tables to the database
->
+
 `php artisan migrate`
->
+
 **Start the Laravel Server**
->
+
 `php artisan serve`
