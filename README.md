@@ -316,10 +316,14 @@ background: rgb(197, 196, 196);
 // resources/js/app.js
 
 ... (other imports)
+import router from './router.js'
 import '../css/tailwind.css'
 import '../css/app.css'
 
-createApp(App)...mount("#app")
+createApp(App)
+...
+.use(router)
+.mount("#app")
 ```
 
 ## Start Laravel Server
