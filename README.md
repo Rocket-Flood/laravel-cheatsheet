@@ -14,7 +14,7 @@
 
 > cd into the new project
 
-`npm install vue@next vue-loader@next @vitejs/plugin-vue`
+`npm install vue@latest vue-loader@next @vitejs/plugin-vue`
 
 **Import Vue.js into Laravel**
 
