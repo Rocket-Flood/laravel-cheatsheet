@@ -326,6 +326,10 @@ createApp(App)
 .mount("#app")
 ```
 
+## Laravel 12 Update
+Install APIs for the laravel application
+`php artisan install:api`
+
 ## Start Laravel Server
 
 **Migrate Database**
